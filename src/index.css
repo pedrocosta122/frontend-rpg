@@ -1,0 +1,248 @@
+/* src/index.css - Tema Claro (Pergaminho / Taverna de Dia) */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f1ea; /* Cor de pergaminho claro */
+  color: #2b1d0f; /* Letra bem escura para máximo contraste no projetor */
+  margin: 0;
+  padding: 0;
+}
+
+/* Container Principal */
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Navegação (Header) */
+.navbar {
+  background-color: #4a3320; /* Cor de madeira escura */
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  border-bottom: 4px solid #b8860b; /* Linha dourada para separar */
+  border-radius: 0 0 8px 8px; /* Dá um acabamento arredondado embaixo */
+}
+
+.nav-link {
+  color: #f4f1ea;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #d4af37; /* Fica dourado ao passar o mouse */
+}
+
+/* Títulos */
+.page-title {
+  text-align: center;
+  color: #4a3320;
+  border-bottom: 2px solid #d1c7b7;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Cards de Livros */
+.book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+}
+
+.book-card {
+  border: 1px solid #d1c7b7;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #ffffff; /* Fundo branco puro para os cards */
+  color: #333;
+  border-left: 6px solid #8b0000; /* Fita vermelha na lateral para dar vida */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sombra leve para destacar do fundo */
+}
+
+.book-title {
+  margin: 0 0 10px 0;
+  color: #8b0000; /* Título em vermelho escuro (tinta) */
+}
+
+.status-msg {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+  font-weight: bold;
+}
+.form-container {
+  max-width: 400px;
+  margin: 100px auto 0 auto;
+}
+
+.standard-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #d1c7b7;
+  font-family: inherit;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #8b0000; /* Fita vermelha ao focar no campo */
+}
+
+.submit-btn {
+  padding: 12px;
+  background-color: #4a3320;
+  color: #f4f1ea;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #8b0000;
+}
+
+.submit-btn:disabled {
+  background-color: #a09b91;
+  cursor: not-allowed;
+}
+
+.error-msg {
+  color: red;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+}
+/* Botões do BookCard */
+.action-btn {
+  margin-top: 15px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.add-btn {
+  background-color: #2b1d0f;
+  color: #f4f1ea;
+}
+
+.add-btn:hover { background-color: #8b0000; }
+
+.remove-btn {
+  background-color: #8b0000;
+  color: #f4f1ea;
+}
+
+.remove-btn:hover { background-color: #ff4c4c; }
+/* --- Expansão e Detalhes do BookCard --- */
+.book-card-library {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-details-section {
+  margin-top: 10px;
+  border-top: 1px solid #e6dfd5;
+  padding-top: 10px;
+}
+
+.toggle-details-btn {
+  background-color: #a09b91;
+  color: #f4f1ea;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.details-content {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Modos de Edição e Visualização */
+.edit-mode-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.form-textarea {
+  font-family: inherit;
+  resize: vertical;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.flex-btn {
+  margin: 0;
+  flex: 1;
+}
+
+.cancel-btn {
+  background-color: #ccc;
+  color: #333;
+  margin: 0;
+  flex: 1;
+}
+
+.view-mode-container {
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.external-link {
+  color: #8b0000;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.empty-link {
+  font-style: italic;
+  color: #777;
+}
+
+.notes-display {
+  background-color: #f4f1ea;
+  padding: 10px;
+  border-radius: 5px;
+  font-style: italic;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.full-width-btn {
+  width: 100%;
+  margin-top: 5px;
+}
+
+/* Ajustes de margem dos botões principais */
+.margin-library { margin-top: 5px; }
+.margin-catalogue { margin-top: 15px; }
