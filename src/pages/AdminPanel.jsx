@@ -23,7 +23,7 @@ export default function AdminPanel() {
         const fetchUsers = async () => {
             const token = localStorage.getItem("token");
             try {
-                const response = await fetch("http://localhost:3000/api/users", {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users`, {
                     method: "GET",
                     headers: { "Authorization": `Bearer ${token}` }
                 });
@@ -49,7 +49,7 @@ export default function AdminPanel() {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch(`http://localhost:3000/api/users/${userId}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/${userId}`, {
                 method: "DELETE",
                 headers: { "Authorization": `Bearer ${token}` }
             });
@@ -77,7 +77,7 @@ export default function AdminPanel() {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch(`http://localhost:3000/api/users/${userId}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/${userId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

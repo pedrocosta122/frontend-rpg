@@ -12,7 +12,7 @@ export default function Catalogue() {
     useEffect(() => {
         const getBooks = async () => {
             try {
-                const response = await fetch("http://localhost:3000/api/books");
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/books`);
 
                 if(!response.ok) {
                     throw new Error("Erro ao conectar ao catálogo");
@@ -40,7 +40,7 @@ export default function Catalogue() {
         }
 
         try {
-            const response = await fetch("http://localhost:3000/api/library", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/library`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export default function Catalogue() {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch(`http://localhost:3000/api/books/${bookId}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/books/${bookId}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`

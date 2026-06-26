@@ -21,7 +21,7 @@ export default function UserLibrary() {
             }
 
             try {
-                const response = await fetch("http://localhost:3000/api/library", {
+                const response = await fetch("${import.meta.env.VITE_API_URL}/api/library", {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`
@@ -55,7 +55,7 @@ export default function UserLibrary() {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch(`http://localhost:3000/api/library/${libraryId}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/library/${libraryId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -90,7 +90,7 @@ export default function UserLibrary() {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch(`http://localhost:3000/api/library/${bookId}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/library/${bookId}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`

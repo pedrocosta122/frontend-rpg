@@ -26,7 +26,7 @@ export default function AddSystem() {
         }
 
         try {
-            const responte = await fetch("http://localhost:3000/api/books", {
+            const responte = await fetch(`${import.meta.env.VITE_API_URL}/api/books`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
