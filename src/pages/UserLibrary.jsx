@@ -51,28 +51,31 @@ export default function UserLibrary() {
         getMyBooks();
     }, [navigate]);
 
-    const handleUpdate = async (bookId, newData) => {
+    const handleUpdate = async (libraryId, updateData) => {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch(`http://localhost:3000/api/library/${bookId}`, {
+            const response = await fetch(`http://localhost:3000/api/library/${libraryId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
-                body: JSON.stringify(newData)
+                body: JSON.stringify(updateData)
             });
 
-            if(!response.ok) throw new Error("Erro ao atualizar os dados do sistema");
-            
-            const data = await response.json();
+            if (!response.ok) throw new Error("Erro ao atualizar os dados no servidor.");
 
-            setBooks(books.map(item => 
-                String(item.id || item._id) === String(bookData)
-                ? { ...item, campaignNotes: data.campaignNotes, bookLink: data.bookLink }
-                : item
-            ));
+            setBooks(prevBooks => prevBooks.map(item => {
+                if (String(item.id || item._id) === String(libraryId)) {
+                    return { 
+                        ...item, 
+                        campaignNotes: updateData.campaignNotes, 
+                        bookLink: updateData.bookLink !== undefined ? updateData.bookLink : item.bookLink 
+                    };
+                }
+                return item;
+            }));
 
             alert("Informações atualizadas com sucesso!");
         } catch (error) {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function BookCard({ book, isLibrary, onAction, libraryEntry, onUpdate }) {
+export default function BookCard({ book, isLibrary, onAction, libraryEntry, onUpdate, isAdmin, onDeleteAdmin }) {
   const bookId = book._id || book.id;
   
   const [showDetails, setShowDetails] = useState(false);
@@ -10,11 +10,18 @@ export default function BookCard({ book, isLibrary, onAction, libraryEntry, onUp
   const [link, setLink] = useState(libraryEntry?.bookLink || '');
 
   const handleSave = async () => {
-      await onUpdate(libraryEntry.id || libraryEntry._id, { 
-          campaignNotes: notes, 
-          bookLink: link 
-      });
-      setIsEditing(false);
+    const bookData = {
+        bookId: libraryEntry.bookId,
+        campaignNotes: notes,
+        bookLink: link
+    }
+
+    if(link.trim() !== "") {
+        bookData.bookLink = link;
+    }
+
+    await onUpdate(libraryEntry.id || libraryEntry._id, bookData);
+    setIsEditing(false);
   };
 
   return (
@@ -90,14 +97,32 @@ export default function BookCard({ book, isLibrary, onAction, libraryEntry, onUp
         </div>
       )}
 
-      {onAction && (
-        <button 
-          onClick={() => onAction(bookId)} 
-          className={`action-btn ${isLibrary ? "remove-btn margin-library" : "add-btn margin-catalogue"}`}
-        >
-          {isLibrary ? "Remover da Estante" : "Adicionar à Biblioteca"}
+      {!isLibrary && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '15px' }}>
+            {onAction && (
+                <button onClick={() => onAction(bookId)} className="action-btn add-btn">
+                    Adicionar à Biblioteca
+                </button>
+            )}
+
+            {isAdmin && onDeleteAdmin && (
+                <button 
+                    // A CORREÇÃO ESTÁ AQUI: Trocamos o alert pela função real
+                    onClick={() => onDeleteAdmin(bookId)} 
+                    className="action-btn remove-btn"
+                >
+                    Excluir do Catálogo (Admin)
+                </button>
+            )}
+        </div>
+      )}
+
+      {isLibrary && onAction && (
+        <button onClick={() => onAction(bookId)} className="action-btn remove-btn margin-library">
+          Remover da Estante
         </button>
       )}
+      
     </li>
   );
 }

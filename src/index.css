@@ -246,3 +246,112 @@ body {
 /* Ajustes de margem dos botões principais */
 .margin-library { margin-top: 5px; }
 .margin-catalogue { margin-top: 15px; }
+
+/* --- Layout e Navegação Centralizada --- */
+.navbar-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-links-group {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link-admin {
+  color: #8b0000;
+}
+
+.nav-link-bold {
+  color: #8b0000;
+  font-weight: bold;
+}
+
+/* --- Painel de Administração --- */
+.admin-page-title {
+  color: #8b0000;
+  text-align: center;
+}
+
+.admin-page-subtitle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.admin-users-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.user-management-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info-display h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.user-info-display p {
+  margin: 5px 0;
+}
+
+.role-badge-admin {
+  color: #8b0000;
+  font-weight: bold;
+}
+
+.role-badge-user {
+  color: #333;
+  font-weight: bold;
+}
+
+.user-actions-group {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-account-btn {
+  margin: 0;
+  background-color: #a09b91;
+  color: #f4f1ea;
+}
+
+.delete-account-btn {
+  margin: 0;
+}
+
+/* --- Edição de Usuários (Admin) --- */
+.admin-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.admin-edit-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap; /* Para telas menores */
+}
+
+.admin-edit-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+  font-family: inherit;
+}
+
+.admin-edit-select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: bold;
+  background-color: #f4f1ea;
+  cursor: pointer;
+}

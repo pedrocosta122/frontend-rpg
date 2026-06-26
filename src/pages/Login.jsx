@@ -29,6 +29,7 @@ export default function Login() {
             }
 
             localStorage.setItem("token", data.token);
+            localStorage.setItem("role", data.user.role);
             navigate("/catalogue");
 
         } catch (error) {

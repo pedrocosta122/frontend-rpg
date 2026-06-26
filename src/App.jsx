@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Catalogue from "./pages/Catalogue";
 import UserLibrary from "./pages/UserLibrary";
 import AddSystem from "./pages/AddSystem";
+import AdminPanel from "./pages/AdminPanel";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/catalogue" element={<Catalogue />} />
         <Route path="/library" element={<UserLibrary />} />
         <Route path="/add-system" element={<AddSystem />} />
+        <Route path='/admin' element={<AdminPanel />} />
       </Routes>
     </BrowserRouter>
   )

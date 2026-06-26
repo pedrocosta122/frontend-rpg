@@ -7,6 +7,8 @@ export default function Catalogue() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const isAdmin = localStorage.getItem("role") === 'admin'
+
     useEffect(() => {
         const getBooks = async () => {
             try {
@@ -55,18 +57,51 @@ export default function Catalogue() {
         }
     };
 
+    const handleDeleteBook = async (bookId) => {
+        const confirmacao = window.confirm("ATENÇÃO (ADMIN): Tem certeza que deseja excluir este sistema do catálogo global? Isso removerá o livro do banco de dados oficial.");
+        if (!confirmacao) return;
+
+        const token = localStorage.getItem("token");
+
+        try {
+            const response = await fetch(`http://localhost:3000/api/books/${bookId}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao excluir o sistema do catálogo. Verifique suas permissões.");
+            }
+
+            alert("Sistema excluído do catálogo oficial com sucesso!");
+            
+            setBooks(prevBooks => prevBooks.filter(book => String(book.id || book._id) !== String(bookId)));
+
+        } catch (error) {
+            alert(error.message);
+        }
+    };
+
     if(loading) return <p className='status-msg'> Carregando catálogo de RPG...</p>;
     if(error) return <p classname='status-msg' style={{ color: 'red' }}>Erro: {error}</p>;
     
     return (
         <div className='app-container'>
-            <nav className='navbar' style={{ justifyContent: 'space-between'}}>
-                <div style={{display: 'flex', gap: '20px'}}>
+            <nav className="navbar navbar-space-between">
+                <div className="navbar-links-group">
                     <Link to='/catalogue' className='nav-link'>Catálogo de Sistemas</Link>
                     <Link to='/library' className='nav-link'>Minha Biblioteca</Link>
+                    
+                    {isAdmin && (
+                        <Link to='/admin' className='nav-link nav-link-admin'>Painel Admin</Link>
+                    )}
                 </div>
 
-                <Link to='/add-system' className='nav-link' style={{ color: '#8b0000', fontWeight: 'bold' }}>+ Adicionar Sistema</Link>
+                <Link to='/add-system' className='nav-link nav-link-bold'>
+                    + Adicionar Sistema
+                </Link>
             </nav>
 
             <h1 className='page-title'>Catálogo de RPG</h1>
@@ -81,6 +116,9 @@ export default function Catalogue() {
                             book={book}
                             isLibrary={false}
                             onAction={handleAdd}
+
+                            isAdmin={isAdmin}
+                            onDeleteAdmin={handleDeleteBook}
                         />
                     ))}
                 </ul>
