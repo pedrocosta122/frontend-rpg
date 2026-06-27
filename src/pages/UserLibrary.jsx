@@ -21,7 +21,7 @@ export default function UserLibrary() {
             }
 
             try {
-                const response = await fetch("${import.meta.env.VITE_API_URL}/api/library", {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/library`, {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`
