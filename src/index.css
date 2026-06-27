@@ -1,202 +1,286 @@
-/* src/index.css - Tema Claro (Pergaminho / Taverna de Dia) */
+:root {
+  /* Paleta de Cores Moderna */
+  --bg-color: #f8fafc; /* Fundo cinza super claro e limpo */
+  --surface-color: #ffffff; /* Branco puro para os cartões */
+  
+  /* Tipografia (Evitando preto puro) */
+  --text-main: #1e293b; /* Grafite escuro para leitura confortável */
+  --text-muted: #64748b; /* Cinza médio para textos secundários */
+  
+  /* Cores de Destaque (Ruby/Crimson para a "vibe" RPG) */
+  --primary: #be123c; 
+  --primary-hover: #9f1239;
+  --secondary: #0f172a; /* Azul noturno quase preto para navbar e botões neutros */
+  
+  /* Ações */
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --success: #10b981;
+  
+  /* Estrutura e Efeitos */
+  --border-color: #e2e8f0;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f1ea; /* Cor de pergaminho claro */
-  color: #2b1d0f; /* Letra bem escura para máximo contraste no projetor */
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
   margin: 0;
   padding: 0;
+  line-height: 1.6;
 }
 
 /* Container Principal */
 .app-container {
-  max-width: 800px;
+  max-width: 850px; /* Levemente mais largo para respiro visual */
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px 20px;
 }
 
 /* Navegação (Header) */
 .navbar {
-  background-color: #4a3320; /* Cor de madeira escura */
-  padding: 20px;
+  background-color: var(--surface-color);
+  padding: 15px 25px;
   display: flex;
   gap: 20px;
-  border-bottom: 4px solid #b8860b; /* Linha dourada para separar */
-  border-radius: 0 0 8px 8px; /* Dá um acabamento arredondado embaixo */
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  margin-bottom: 30px;
 }
 
 .nav-link {
-  color: #f4f1ea;
+  color: var(--text-muted);
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
-  transition: color 0.3s;
+  font-weight: 500;
+  font-size: 1.05rem;
+  transition: var(--transition);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
 }
 
 .nav-link:hover {
-  color: #d4af37; /* Fica dourado ao passar o mouse */
+  color: var(--primary);
+  background-color: #f1f5f9;
 }
 
 /* Títulos */
 .page-title {
   text-align: center;
-  color: #4a3320;
-  border-bottom: 2px solid #d1c7b7;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  color: var(--text-main);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
 }
 
 /* Cards de Livros */
 .book-list {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
   list-style: none;
   padding: 0;
 }
 
 .book-card {
-  border: 1px solid #d1c7b7;
-  padding: 15px;
-  border-radius: 8px;
-  background-color: #ffffff; /* Fundo branco puro para os cards */
-  color: #333;
-  border-left: 6px solid #8b0000; /* Fita vermelha na lateral para dar vida */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sombra leve para destacar do fundo */
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  padding: 24px;
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  border-left: 6px solid var(--primary);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.book-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px); /* Efeito de elevação suave */
 }
 
 .book-title {
-  margin: 0 0 10px 0;
-  color: #8b0000; /* Título em vermelho escuro (tinta) */
+  margin: 0 0 8px 0;
+  color: var(--text-main);
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
 .status-msg {
   text-align: center;
-  font-style: italic;
-  color: #555;
-  font-weight: bold;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: 20px;
 }
+
 .form-container {
-  max-width: 400px;
-  margin: 100px auto 0 auto;
+  max-width: 420px;
+  margin: 60px auto 0 auto;
+  background-color: var(--surface-color);
+  padding: 40px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
 }
 
 .standard-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .form-input {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #d1c7b7;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
   font-family: inherit;
+  font-size: 1rem;
+  color: var(--text-main);
+  background-color: var(--bg-color);
+  transition: var(--transition);
 }
 
 .form-input:focus {
   outline: none;
-  border-color: #8b0000; /* Fita vermelha ao focar no campo */
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(190, 18, 60, 0.15); /* Focus ring moderno */
+  background-color: var(--surface-color);
 }
 
 .submit-btn {
-  padding: 12px;
-  background-color: #4a3320;
-  color: #f4f1ea;
+  padding: 14px;
+  background-color: var(--primary);
+  color: #ffffff;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1.1rem;
-  transition: background-color 0.3s;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .submit-btn:hover:not(:disabled) {
-  background-color: #8b0000;
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
 }
 
 .submit-btn:disabled {
-  background-color: #a09b91;
+  background-color: #cbd5e1;
+  color: #94a3b8;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .error-msg {
-  color: red;
+  color: var(--danger);
   margin: 0;
   text-align: center;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 0.95rem;
+  background-color: #fef2f2;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #fecaca;
 }
+
 /* Botões do BookCard */
 .action-btn {
   margin-top: 15px;
-  padding: 8px 12px;
+  padding: 10px 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: var(--transition);
 }
 
 .add-btn {
-  background-color: #2b1d0f;
-  color: #f4f1ea;
+  background-color: var(--secondary);
+  color: #ffffff;
 }
 
-.add-btn:hover { background-color: #8b0000; }
+.add-btn:hover { 
+  background-color: #1e293b;
+  box-shadow: var(--shadow-md);
+}
 
 .remove-btn {
-  background-color: #8b0000;
-  color: #f4f1ea;
+  background-color: var(--surface-color);
+  color: var(--danger);
+  border: 1px solid var(--danger);
 }
 
-.remove-btn:hover { background-color: #ff4c4c; }
+.remove-btn:hover { 
+  background-color: var(--danger);
+  color: #ffffff;
+}
+
 /* --- Expansão e Detalhes do BookCard --- */
 .book-card-library {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .card-details-section {
-  margin-top: 10px;
-  border-top: 1px solid #e6dfd5;
-  padding-top: 10px;
+  margin-top: 16px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 16px;
 }
 
 .toggle-details-btn {
-  background-color: #a09b91;
-  color: #f4f1ea;
+  background-color: #f1f5f9;
+  color: var(--text-main);
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.toggle-details-btn:hover {
+  background-color: #e2e8f0;
 }
 
 .details-content {
-  margin-top: 10px;
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 /* Modos de Edição e Visualização */
 .edit-mode-container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .form-label {
   font-size: 0.9rem;
-  font-weight: bold;
+  font-weight: 600;
+  color: var(--text-muted);
 }
 
 .form-textarea {
   font-family: inherit;
   resize: vertical;
+  min-height: 100px;
 }
 
 .btn-group {
   display: flex;
-  gap: 10px;
-  margin-top: 5px;
+  gap: 12px;
+  margin-top: 8px;
 }
 
 .flex-btn {
@@ -205,47 +289,60 @@ body {
 }
 
 .cancel-btn {
-  background-color: #ccc;
-  color: #333;
+  background-color: #f1f5f9;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
   margin: 0;
   flex: 1;
+}
+
+.cancel-btn:hover {
+  background-color: #e2e8f0;
 }
 
 .view-mode-container {
   font-size: 0.95rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .external-link {
-  color: #8b0000;
-  font-weight: bold;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.external-link:hover {
   text-decoration: underline;
+  color: var(--primary-hover);
 }
 
 .empty-link {
   font-style: italic;
-  color: #777;
+  color: var(--text-muted);
 }
 
 .notes-display {
-  background-color: #f4f1ea;
-  padding: 10px;
-  border-radius: 5px;
-  font-style: italic;
+  background-color: #f8fafc;
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
   margin: 0;
   white-space: pre-wrap;
+  color: var(--text-main);
+  line-height: 1.5;
 }
 
 .full-width-btn {
   width: 100%;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 /* Ajustes de margem dos botões principais */
-.margin-library { margin-top: 5px; }
-.margin-catalogue { margin-top: 15px; }
+.margin-library { margin-top: 8px; }
+.margin-catalogue { margin-top: 20px; }
 
 /* --- Layout e Navegação Centralizada --- */
 .navbar-space-between {
@@ -256,31 +353,41 @@ body {
 
 .navbar-links-group {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 
 .nav-link-admin {
-  color: #8b0000;
+  color: var(--primary);
 }
 
 .nav-link-bold {
-  color: #8b0000;
-  font-weight: bold;
+  color: var(--surface-color);
+  background-color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-link-bold:hover {
+  background-color: var(--primary-hover);
+  color: var(--surface-color);
 }
 
 /* --- Painel de Administração --- */
 .admin-page-title {
-  color: #8b0000;
+  color: var(--text-main);
   text-align: center;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
 }
 
 .admin-page-subtitle {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  color: var(--text-muted);
+  font-size: 1.1rem;
 }
 
 .admin-users-list {
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
 }
 
@@ -292,32 +399,50 @@ body {
 
 .user-info-display h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 700;
 }
 
 .user-info-display p {
-  margin: 5px 0;
+  margin: 6px 0;
+  color: var(--text-muted);
 }
 
+/* Badges Modernas para os Cargos */
 .role-badge-admin {
-  color: #8b0000;
-  font-weight: bold;
+  background-color: #fef2f2;
+  color: var(--primary);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1px solid #fecaca;
 }
 
 .role-badge-user {
-  color: #333;
-  font-weight: bold;
+  background-color: #f1f5f9;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
 }
 
 .user-actions-group {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .edit-account-btn {
   margin: 0;
-  background-color: #a09b91;
-  color: #f4f1ea;
+  background-color: #f1f5f9;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.edit-account-btn:hover {
+  background-color: #e2e8f0;
 }
 
 .delete-account-btn {
@@ -328,30 +453,44 @@ body {
 .admin-edit-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   width: 100%;
 }
 
 .admin-edit-row {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
-  flex-wrap: wrap; /* Para telas menores */
+  flex-wrap: wrap; 
 }
 
 .admin-edit-input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
   flex: 1;
   font-family: inherit;
+  transition: var(--transition);
+}
+
+.admin-edit-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(190, 18, 60, 0.15);
 }
 
 .admin-edit-select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-weight: bold;
-  background-color: #f4f1ea;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  background-color: var(--bg-color);
   cursor: pointer;
+  color: var(--text-main);
+  transition: var(--transition);
+}
+
+.admin-edit-select:focus {
+  outline: none;
+  border-color: var(--primary);
 }
