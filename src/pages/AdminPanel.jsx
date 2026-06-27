@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
+import Navbar from '../components/NavBar';
+
 export default function AdminPanel() {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -108,12 +110,7 @@ export default function AdminPanel() {
 
     return (
         <div className="app-container">
-            <nav className="navbar navbar-space-between">
-                <div className="navbar-links-group">
-                    <Link to="/catalogue" className="nav-link">Catálogo de Sistemas</Link>
-                    <Link to="/library" className="nav-link">Minha Biblioteca</Link>
-                </div>
-            </nav>
+            <Navbar />
 
             <h1 className="page-title admin-page-title">Painel do Administrador</h1>
             <p className="admin-page-subtitle">Gerenciamento de Contas de Usuários</p>

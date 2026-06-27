@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import BookCard from '../components/BookCard';
+import Navbar from '../components/NavBar';
 
 export default function UserLibrary() {
     const [books, setBooks] = useState([]);
@@ -107,24 +108,10 @@ export default function UserLibrary() {
             alert(error.message);
         }
     };
-
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        navigate("/login");
-    };
     
     return (
         <div className="app-container">
-            <nav className="navbar" style={{ justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', gap: '20px' }}>
-                    <Link to="/catalogue" className="nav-link">Catálogo de Sistemas</Link>
-                    <Link to="/library" className="nav-link">Minha Biblioteca</Link>
-                </div>
-
-                <button onClick={handleLogout} className="nav-link" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-                    Sair
-                </button>
-            </nav>
+            <Navbar />
 
             <h1 className="page-title">Minha Biblioteca Pessoal</h1>
 

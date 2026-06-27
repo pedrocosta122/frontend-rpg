@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
 import BookCard from '../components/BookCard';
+import Navbar from '../components/NavBar'
 
 export default function Catalogue() {
     const [books, setBooks] = useState([]);
@@ -89,15 +91,7 @@ export default function Catalogue() {
     
     return (
         <div className='app-container'>
-            <nav className="navbar navbar-space-between">
-                <div className="navbar-links-group">
-                    <Link to='/catalogue' className='nav-link'>Catálogo de Sistemas</Link>
-                    <Link to='/library' className='nav-link'>Minha Biblioteca</Link>
-                    
-                    {isAdmin && (
-                        <Link to='/admin' className='nav-link nav-link-admin'>Painel Admin</Link>
-                    )}
-                </div>
+            <Navbar />
 
                 <Link to='/add-system' className='nav-link nav-link-bold'>
                     + Adicionar Sistema

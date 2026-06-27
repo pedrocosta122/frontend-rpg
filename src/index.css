@@ -494,3 +494,10 @@ body {
   outline: none;
   border-color: var(--primary);
 }
+
+.nav-btn-logout {
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
