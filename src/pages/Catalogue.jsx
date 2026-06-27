@@ -93,10 +93,6 @@ export default function Catalogue() {
         <div className='app-container'>
             <Navbar />
 
-                <Link to='/add-system' className='nav-link nav-link-bold'>
-                    + Adicionar Sistema
-                </Link>
-
             <h1 className='page-title'>Catálogo de RPG</h1>
 
             {books.length === 0 ? (
