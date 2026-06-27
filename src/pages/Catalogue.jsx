@@ -96,7 +96,6 @@ export default function Catalogue() {
                 <Link to='/add-system' className='nav-link nav-link-bold'>
                     + Adicionar Sistema
                 </Link>
-            </nav>
 
             <h1 className='page-title'>Catálogo de RPG</h1>
 
